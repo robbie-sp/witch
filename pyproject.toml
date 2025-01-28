@@ -1,0 +1,25 @@
+virtualenvs.in-project = true
+
+[tool.poetry]
+name = "Gordonbot"
+version = "0.1.0"
+description = "Gordonbot"
+authors = ["Rob Spaul"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = {extras = ["standard"], version = "^0.115.6"}
+sqlmodel = "^0.0.22"
+python-fasthtml = "^0.12.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.4"
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
