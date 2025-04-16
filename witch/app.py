@@ -1,9 +1,12 @@
-from fasthtml.common import fast_app
-from fasthtml.common import Ul, Li, Form, Label, Input, Br, Button, Titled, H2, Redirect
+from fasthtml import ft
+from fasthtml.common import (
+    Redirect,
+    fast_app,
+)
 from sqlmodel import Session, select
-from witch.models import Witch
-from witch.db import get_engine
 
+from witch.db import get_engine
+from witch.models import Witch
 
 app, rt = fast_app()
 
@@ -18,25 +21,25 @@ def get():
         witches = session.exec(select(Witch)).all()
 
     # Generate the HTML for the list of witches
-    witch_list = Ul(*[Li(f"{witch.name} - {witch.type}") for witch in witches])
+    witch_list = ft.Ul(*[ft.Li(f"{witch.name} - {witch.type}") for witch in witches])
 
     # Form to add a new witch
-    add_form = Form(
+    add_form = ft.Form(
         Method="post",
         Action="/add",
         Children=[
-            Label("Name:", For="name"),
-            Input(Name="name", Type="text", Required=True),
-            Br(),
-            Label("Type:", For="type"),
-            Input(Name="type", Type="text", Required=True),
-            Br(),
-            Button("Add Witch", Type="submit"),
+            ft.Label("Name:", For="name"),
+            ft.Input(Name="name", Type="text", Required=True),
+            ft.Br(),
+            ft.Label("Type:", For="type"),
+            ft.Input(Name="type", Type="text", Required=True),
+            ft.Br(),
+            ft.Button("Add Witch", Type="submit"),
         ],
     )
 
     # Return the page
-    return Titled("Witches List", witch_list, H2("Add a New Witch"), add_form)
+    return ft.Titled("Witches List", witch_list, ft.H2("Add a New Witch"), add_form)
 
 
 # Route to handle adding a new witch

@@ -1,5 +1,6 @@
-from witch import db
 from pathlib import Path
+
+from witch import db
 
 
 def test_db_url():

@@ -1,6 +1,7 @@
-from witch.models import Witch
-from sqlmodel import SQLModel, Session
+from sqlmodel import Session, SQLModel
+
 from witch.db import get_engine
+from witch.models import Witch
 
 
 def create_db_and_tables():

@@ -1,6 +1,7 @@
-from sqlmodel import create_engine
-from sqlalchemy.engine.base import Engine
 from pathlib import Path
+
+from sqlalchemy.engine.base import Engine
+from sqlmodel import create_engine
 
 # SQLITE_FILE_NAME = "database.db"
 # SQLITE_URL = f"sqlite:///{SQLITE_FILE_NAME}"
