@@ -4,13 +4,14 @@ from witch.db import get_engine
 from witch.models import Witch
 
 
-def create_db_and_tables():
+def create_db_and_tables() -> None:
+    """Create the database and tables."""
     engine = get_engine()
     SQLModel.metadata.create_all(engine)
-    print(f"Database is stored at: {engine.url.database}")
 
 
-def populate_db():
+def populate_db() -> None:
+    """Populate the database with initial data."""
     witches = [
         Witch(name="Hermione Granger", type="good"),
         Witch(name="Bellatrix Lestrange", type="evil"),
@@ -24,7 +25,8 @@ def populate_db():
         session.commit()
 
 
-def main():
+def main() -> None:
+    """Main function to create the database and populate it."""
     create_db_and_tables()
     populate_db()
 

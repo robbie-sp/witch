@@ -1,3 +1,5 @@
+# ruff: noqa: ANN201, D103
+
 from fasthtml import ft
 from fasthtml.common import (
     Redirect,
@@ -5,17 +7,18 @@ from fasthtml.common import (
 )
 from sqlmodel import Session, select
 
-from witch.db import get_engine
+from witch.db import get_config, get_engine
 from witch.models import Witch
 
 app, rt = fast_app()
 
-engine = get_engine()
+config = get_config()
+engine = get_engine(config)
 
 
-# Route to display the list of witches and a form to add more
 @rt("/")
 def get():
+    """Route to display the list of witches and a form to add more."""
     # Fetch witches from the database
     with Session(engine) as session:
         witches = session.exec(select(Witch)).all()
@@ -42,12 +45,12 @@ def get():
     return ft.Titled("Witches List", witch_list, ft.H2("Add a New Witch"), add_form)
 
 
-# Route to handle adding a new witch
 @rt("/add")
-def post(name: str, type: str):
+def post(name: str, witch_type: str):
+    """Route to handle adding a new witch."""
     # Add the new witch to the database
     with Session(engine) as session:
-        new_witch = Witch(name=name, type=type)
+        new_witch = Witch(name=name, type=witch_type)
         session.add(new_witch)
         session.commit()
 

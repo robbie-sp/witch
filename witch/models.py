@@ -1,3 +1,4 @@
+# ruff: noqa
 from sqlmodel import Field, SQLModel
 
 
@@ -7,7 +8,7 @@ class Witch(SQLModel, table=True):
     type: str
 
 
-# class User:
+# class User:  noqa: ERA001
 #     name: str
 
 
