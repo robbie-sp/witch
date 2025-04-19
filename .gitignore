@@ -1,3 +1,6 @@
+# postgres local db files
+local_db/
+
 # sqlite databases
 *.db  
 

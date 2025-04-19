@@ -11,6 +11,7 @@
 
 - auth
 - postgres
+- postgres on AWS
 - github copilot
 - CI
 - CD

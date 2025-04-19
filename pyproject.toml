@@ -24,6 +24,7 @@ sqlmodel = "^0.0.22"
 python-fasthtml = "^0.12.0"
 #flask = "^3.1.0"
 python-dotenv = "^1.1.0"
+psycopg2 = "^2.9.10"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
@@ -75,6 +76,7 @@ ignore = [
     "D401", # imperative mood
     "D211",
     "D213",
+    "D203", # requires blank line before class docstring which clashes with formater
 ]
 
 [tool.ruff.lint.per-file-ignores]

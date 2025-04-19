@@ -1,24 +1,40 @@
-from pathlib import Path
-
 from witch import db
 
 
-def test_db_url() -> None:
-    """Test the db_url function."""
-    # Test with a specific file name and location
-    db_file_name = "test_db.db"
-    db_location = Path(__file__).parent
+def test_get_engine_sqlite() -> None:
+    """Test the get_engine function."""
+    config = {
+        "sqlite_path": "witch_database.db",
+        "db_echo": True,
+        "db_driver": "sqlite",
+    }
 
-    assert db.db_url(db_file_name=db_file_name, db_location=db_location) == (
-        f"sqlite:///{db_location}/{db_file_name}"
-    ), "Should return the correct SQLite URL"
+    # Test if the engine is created successfully
+    engine = db.get_engine(config)
+    assert engine is not None, "Engine should not be None"
+    assert engine.name == "sqlite", "Engine should be SQLite"
 
 
-def test_get_engine() -> None:
+def test_get_engine_postgres() -> None:
     """Test the get_engine function."""
     config = db.get_config()
 
     # Test if the engine is created successfully
     engine = db.get_engine(config)
     assert engine is not None, "Engine should not be None"
-    assert engine.name == "sqlite", "Engine should be SQLite"
+    assert engine.name == "postgresql", "Engine should be SQLite"
+
+
+def test_create_url_object() -> None:
+    """Test the create_url_object function."""
+    config = {
+        "db_driver": "postgresql",
+        "db_username": "user",
+        "db_password": "password",
+        "db_host": "localhost",
+        "db_database": "test_db",
+    }
+
+    url = db.create_url_object(config)
+    url_string = url.render_as_string(hide_password=False)
+    assert url_string == "postgresql://user:password@localhost/test_db", "URL string should be formatted correctly"
