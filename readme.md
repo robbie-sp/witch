@@ -1,5 +1,22 @@
 # Witch App
 
+Load up database
+
+```sh
+docker-compose up -d
+```
+
+Export requirements
+
+```sh
+poetry export --without-hashes > requirements.txt
+```
+
+## Dependencies
+
+- Docker
+- postgres docker image
+
 ## Ideas
 
 - witch log in
@@ -10,9 +27,12 @@
 ## Technical
 
 - auth
-- postgres
 - postgres on AWS
 - github copilot
 - CI
 - CD
 - Encrypt
+
+## Done
+
+- postgres
