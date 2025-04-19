@@ -1,16 +1,13 @@
 # ruff: noqa: ANN201, D103
 
 from fasthtml import ft
-from fasthtml.common import (
-    Redirect,
-    fast_app,
-)
+from fasthtml.common import Redirect, fast_app, picolink
 from sqlmodel import Session, select
 
 from witch.db import get_config, get_engine
 from witch.models import Witch
 
-app, rt = fast_app()
+app, rt = fast_app(hdrs=picolink, live=True, debug=True)
 
 config = get_config()
 engine = get_engine(config)
@@ -28,17 +25,16 @@ def get():
 
     # Form to add a new witch
     add_form = ft.Form(
-        Method="post",
-        Action="/add",
-        Children=[
-            ft.Label("Name:", For="name"),
-            ft.Input(Name="name", Type="text", Required=True),
-            ft.Br(),
-            ft.Label("Type:", For="type"),
-            ft.Input(Name="type", Type="text", Required=True),
-            ft.Br(),
-            ft.Button("Add Witch", Type="submit"),
-        ],
+        ft.Label("Name:", _for="name"),
+        ft.Input(name="name", id="name"),
+        ft.Br(),
+        ft.Label("Type:", _for="witch_type"),
+        ft.Input(Name="witch_type", id="witch_type"),
+        ft.Br(),
+        ft.Button("Add another Witch"),
+        hx_post="/add",
+        action="/add",
+        method="post",
     )
 
     # Return the page
