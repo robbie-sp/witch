@@ -12,6 +12,15 @@ Export requirements
 poetry export --without-hashes > requirements.txt
 ```
 
+## Notes
+
+### Elastic Beanstalk
+
+```sh
+eb create # create/restart an environment
+eb deploy # update an environment
+```
+
 ## Dependencies
 
 - Docker
