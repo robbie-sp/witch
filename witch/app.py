@@ -17,11 +17,17 @@ engine = get_engine(config)
 def get():
     """Route to display the list of witches and a form to add more."""
     # Fetch witches from the database
-    with Session(engine) as session:
-        witches = session.exec(select(Witch)).all()
+    # with Session(engine) as session:
+    #     witches = session.exec(select(Witch)).all()
 
     # Generate the HTML for the list of witches
-    witch_list = ft.Ul(*[ft.Li(f"{witch.name} - {witch.type}") for witch in witches])
+    # witch_list = ft.Ul(*[ft.Li(f"{witch.name} - {witch.type}") for witch in witches])
+
+    witch_list = ft.Ul(
+        ft.Li("Witch 1 - Type A"),
+        ft.Li("Witch 2 - Type B"),
+        ft.Li("Witch 3 - Type C"),
+    )
 
     # Form to add a new witch
     add_form = ft.Form(
