@@ -183,5 +183,7 @@ cython_debug/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
+!.elasticbeanstalk/config.yml
+!.elasticbeanstalk/*.config
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
