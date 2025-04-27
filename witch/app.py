@@ -9,6 +9,8 @@ from witch.models import Witch
 
 app, rt = fast_app(hdrs=picolink, live=True, debug=True)
 
+application = app
+
 config = get_config()
 engine = get_engine(config)
 
