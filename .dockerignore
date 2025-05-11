@@ -1,0 +1,12 @@
+.venv
+.ruff_cache
+.pytest_cache
+__pycache__
+local_db
+.vscode
+.env
+.gitignore
+.sesskey
+llms-ctx.txt
+witch_database.db
+.elasticbeanstalk

@@ -45,3 +45,7 @@ eb deploy # update an environment
 ## Done
 
 - postgres
+
+## References
+
+[Running Fastapi on Elastic Beanstalk](https://testdriven.io/blog/fastapi-elastic-beanstalk/)
