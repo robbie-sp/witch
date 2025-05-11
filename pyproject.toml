@@ -1,39 +1,31 @@
-virtualenvs.in-project = true
-
+[project]
+name = "fasthtml-template"
+version = "0.1.0"
+description = "A \"Hello World\" template for FastHTML"
+authors = [
+    {name = "Bob Ambrose", email = "bambrose24@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-fasthtml>=0.12.15",
+    "sqlmodel>=0.0.22",
+    "python-fasthtml>=0.12.0",
+    "python-dotenv>=1.1.0",
+    "psycopg2>=2.9.10",
+]
 pythonpath="witch"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "ruff>=0.11.9",
+]
 
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
 ]
-
-[tool.poetry]
-name = "witch"
-version = "0.1.0"
-description = ""
-authors = ["Rob Spaul"]
-license = "MIT"
-readme = "README.md"
-package-mode = false
-
-
-[tool.poetry.dependencies]
-python = "^3.13"
-# fastapi = {extras = ["standard"], version = "^0.115.6"}
-sqlmodel = "^0.0.22"
-python-fasthtml = "^0.12.0"
-# flask = "^3.1.0"
-python-dotenv = "^1.1.0"
-gunicorn = "^23.0.0"
-psycopg2-binary = "^2.9.10"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "*"
-pytest = "*"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.

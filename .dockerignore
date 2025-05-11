@@ -10,3 +10,4 @@ local_db
 llms-ctx.txt
 witch_database.db
 .elasticbeanstalk
+*.pyc
