@@ -1,11 +1,11 @@
 # ruff: noqa: ANN201, D103
 
-from fasthtml import ft
+from fasthtml import ft, serve
 from fasthtml.common import Redirect, fast_app, picolink
 from sqlmodel import Session, select
 
-from witch.db import get_config, get_engine
-from witch.models import Witch
+from db import get_config, get_engine
+from models import Witch
 
 app, rt = fast_app(hdrs=picolink, live=True, debug=True)
 
@@ -24,7 +24,7 @@ def get():
     # witch_list = ft.Ul(*[ft.Li(f"{witch.name} - {witch.type}") for witch in witches])
 
     witch_list = ft.Ul(
-        ft.Li("Witch 1 - Type A"),
+        ft.Li("Witch 1 - Type A - on docker"),
         ft.Li("Witch 2 - Type B"),
         ft.Li("Witch 3 - Type C"),
     )
@@ -58,3 +58,6 @@ def post(name: str, witch_type: str):
 
     # Redirect back to the main page
     return Redirect("/")
+
+
+serve()
